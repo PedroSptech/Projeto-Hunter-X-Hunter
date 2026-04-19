@@ -1,0 +1,305 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: "Karantina", system-ui;
+    font-weight: 500;
+    font-style: normal;
+    background-color: #202B3D;
+    color: #DBDBDB;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    background-color: #18202C;
+}
+
+.cadastro {
+    font-family: "Karantina", system-ui;
+    font-weight: 500;
+    font-style: normal;
+    background-color: #6F2832;
+    border-radius: 25px;
+    height: 50px;
+    width: 100px;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.login {
+    font-family: "Karantina", system-ui;
+    font-weight: 500;
+    font-style: normal;
+    background-color: #C98300;
+    border-radius: 25px;
+    height: 50px;
+    width: 100px;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.logo-header {
+    display: flex;
+    justify-content: center;
+    background-color: #6F2832;
+    width: 100%;
+}
+
+.Nome_associacao {
+    display: flex;
+    justify-content: center;
+    background-color: #18202C;
+    margin-bottom: 70px;
+}
+
+.historia {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.historia p {
+    font-size: 35px;
+    margin-right: 20px;
+}
+
+.historia img {
+    margin-left: 20px;
+}
+
+.container-hr {
+    margin-top: 50px;
+    font-size: 70px;
+}
+
+.container-hr hr {
+    width: 95%;
+}
+
+.container-hr span {
+    display: flex;
+    justify-content: center;
+    margin-bottom: -40px;
+}
+
+.Pilares {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.card-pilar {
+    background-color: #331821;
+    border-radius: 15px;
+    width: 520px;
+    height: 540px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.card-pilar img {
+    margin-bottom: 20px;
+}
+
+.card-pilar.legado img {
+    margin-bottom: -10px;
+}
+
+.zodiacos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1a2634;
+}
+
+.hunter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    background-color: #253447;
+    border: 10px solid #3d4b5c;
+    border-radius: 8px;
+}
+
+.hunter img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.netero {
+    border-color: #ffff00;
+}
+
+.pariston {
+    border-color: #ff8c00;
+}
+
+.hunter h3 {
+    color: white;
+    font-size: 25px;
+    margin: 5px 0;
+}
+
+.hunter h4 {
+    color: #ccc;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.hunter h5 {
+    color: #888;
+    font-size: 25px;
+}
+
+.hunter span {
+    font-weight: bold;
+}
+
+.netero span {
+    color: #4caf50;
+}
+.ging span {
+    color: #ffeb3b;
+}
+.mizainston span{
+    color: red;
+}
+.sayiu span{
+    color: red;
+}
+
+.geru span{
+    color: #A0A7AD;
+}
+.cluck span{
+    color: #A0A7AD;
+}
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+.hunter.netero, .hunter.pariston {
+    flex: 0 1 40%; 
+    max-width: 300px; 
+}
+.estatisticas{
+    display: flex;
+    justify-content: center;
+    background-color: #6F2832;
+    margin-top: 15px;
+}
+.estatisticas h1{
+    font-size: 50px;
+}
+
+.container-dados {
+    background-color: #202B3D; 
+    padding: 40px;
+}
+
+.dados {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.card-dado {
+    background-color: #3d4b5c; 
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.card-dado h3 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.card-dado p {
+    font-size: 60px; 
+    margin: 0;
+    font-weight: bold;
+}
+
+.container-frase {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.box-frase {
+    background-color: #000; 
+    border: 1px solid #333;
+    padding: 40px;
+    max-width: 80%;
+    border-radius: 5px;
+}
+
+.box-frase h2 {
+    color: #C98300; 
+    font-size: 65px;
+    margin: 0;
+}
+
+.box-frase span {
+    display: block;
+    text-align: right;
+    color: #ffff00;
+    font-size: 50px;
+    margin-top: 10px;
+}
+
+.footer-hunter {
+    background-color: #18202C;
+    padding: 40px;
+    margin-top: 50px;
+}
+
+.footer-content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-logo img {
+    width: 150px;
+}
+
+.footer-logo p {
+    font-size: 50px;
+}
+
+.footer-hunter hr {
+    border: 0;
+    border-top: 1px solid #3d4b5c;
+    margin: 20px 0;
+}
+
+.copyright {
+    font-size: 30px;
+    color: #888;
+}
+
