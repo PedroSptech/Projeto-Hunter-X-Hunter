@@ -1,0 +1,13 @@
+var express = require("express");
+var router = express.Router();
+var missaoController = require("../controllers/missaoController");
+
+router.get("/listar/:idCacador", function (req, res) {
+    missaoController.listarPorCacador(req, res);
+});
+
+router.post("/publicar", function (req, res) {
+    missaoController.publicar(req, res);
+});
+
+module.exports = router;

@@ -1,0 +1,93 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: "Karantina", system-ui;
+    font-weight: 500;
+    font-style: normal;
+    background-color: #F5F5F5;
+    color: #DBDBDB;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.back-arrow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 30px;
+}
+
+h1 {
+    font-size: 128px;
+    letter-spacing: 5px;
+    margin-top: -80px;
+    margin-bottom: 0;
+    opacity: 0.8;
+    color: #AC2B2B;
+}
+
+.logo {
+    width: 300px; 
+    height: 300px;
+}
+
+input {
+    background-color: #303030;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    width: 300px;
+    height: 20px;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 15px;
+    color: #AC2B2B;
+    margin-bottom: 5px;
+    display: block; 
+}
+
+select {
+    background-color: #303030; 
+    color: #DBDBDB;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    width: 324px; 
+    height: 44px;
+    font-family: inherit;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+select option {
+    background-color: #303030;
+    color: white;
+    font-family: "Karantina", sans-serif;
+}
+
+button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 15px 60px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #AC2B2B;
+}
