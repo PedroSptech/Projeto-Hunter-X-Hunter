@@ -247,15 +247,15 @@ header {
 }
 
 .box-frase {
-    background-color: #000; 
+    background-color: #1e2130 ; 
     border: 1px solid #333;
     padding: 40px;
     max-width: 80%;
-    border-radius: 5px;
+    border-radius: 5px 50px 5px 50px;
 }
 
 .box-frase h2 {
-    color: #C98300; 
+    color: #ffffff; 
     font-size: 65px;
     margin: 0;
 }

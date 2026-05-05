@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Karantina", system-ui;
+  font-weight: 500;
+  font-style: normal;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  background: #CCC;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #1e2130;
+  padding: 24px 0;
+}
+
+.logo_imagem{
+    display: flex;
+    justify-content: center;
+}
+
+.opcoes{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    align-items:start;
+    gap: 15px;
+}
+
+.opcoes a{
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    transition: transform 0.2s;
+}
+
+.opcoes a:hover {
+  transform: scale(1.05);
+}
+
+.opcoes .criar_missao{
+    margin-bottom: 325px;
+}
+
+.logout{
+   text-decoration: none;
+   color: white;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   padding: 10px 20px;
+   transition: transform 0.2s;
+}
+
+.logout:hover {
+    transform: scale(1.05);
+}
