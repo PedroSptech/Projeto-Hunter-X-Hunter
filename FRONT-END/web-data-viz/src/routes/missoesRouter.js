@@ -10,4 +10,8 @@ router.post("/publicar", function (req, res) {
     missaoController.publicar(req, res);
 });
 
+router.post("/vincular", function(req, res) {
+    missaoController.vincular(req, res);
+});
+
 module.exports = router;

@@ -2,32 +2,17 @@ CREATE DATABASE HunterXHunter;
 use HunterXHunter;
 
 CREATE TABLE Cacador (
-    idCacador INT PRIMARY KEY AUTO_INCREMENT,
+    idCacador INT PRIMARY KEY,
     Codigo_caçador CHAR(12) NOT NULL UNIQUE,
     nome_Cacador VARCHAR(100) UNIQUE NOT NULL,
     Tipo_Nen VARCHAR(50) NOT NULL,
     Status_cacador VARCHAR(45) NOT NULL,
     cidade_natal VARCHAR(100),
-    dt_Nasc DATE,
-	Tipo_cacador VARCHAR(45) NOT NULL,
-	Ranking_cacador CHAR(10) NOT NULL,
-	Zodiaco CHAR(3) NOT NULL
+    dt_Nasc DATE
 );
 ALTER TABLE Cacador 
 ADD CONSTRAINT chk_Tipo_Nen 
 CHECK (Tipo_Nen IN ('INTENSIFICADOR', 'ESPECIALISTA', 'CONJURADOR', 'MANIPULADOR', 'EMISSOR', 'TRANSFORMADOR'));
-
-ALTER TABLE Cacador
-ADD CONSTRAINT chk_zodiaco
-CHECK (Zodiaco IN ('SIM','NÃO'));
-
-ALTER TABLE Cacador 
-ADD CONSTRAINT chk_Ranking_cacador 
-CHECK (Ranking_cacador IN ('Licenciado','Single', 'Double', 'Triple'));
-
-ALTER TABLE Cacador 
-ADD CONSTRAINT chk_Tipo_cacador
-CHECK (Tipo_cacador IN ('Lista Negra', 'Gourmet', 'Arqueólogo/Ruínas', 'Talentos', 'Contrato','Músicas'));
 
 CREATE TABLE Missao (
     idMissao INT PRIMARY KEY,
@@ -36,7 +21,6 @@ CREATE TABLE Missao (
     fk_cacador INT,
     status_Missao VARCHAR(45) NOT NULL,
     dt_missao DATE NOT NULL,
-	grau_dificuldade CHAR(2) NOT NULL,
     CONSTRAINT fk_missao_cacador 
         FOREIGN KEY (fk_cacador) 
         REFERENCES Cacador(idCacador)
@@ -48,15 +32,9 @@ CREATE TABLE Cacador_Missao (
     FOREIGN KEY (fk_cacador) REFERENCES Cacador(idCacador),
     FOREIGN KEY (fk_missao)  REFERENCES Missao(idMissao)
 );
-
 ALTER TABLE Missao 
 ADD CONSTRAINT chk_status_missao 
 CHECK (status_Missao IN ('Pendente', 'Em Andamento', 'Concluída', 'Cancelada'));
-
-ALTER TABLE Missao 
-ADD CONSTRAINT chk_grau_dificuldade_missao 
-CHECK (grau_dificuldade IN ('C', 'B', 'A', 'S', 'S+'));
-
 INSERT INTO Cacador (idCacador, Codigo_caçador, nome_Cacador, Tipo_Nen, Status_cacador, cidade_natal, dt_Nasc) VALUES 
 (1, 'XH-2024-0405', 'Gon Freecss', 'INTENSIFICADOR', 'Ativo', 'Ilha da Baleia', '2011-05-05'),
 (2, 'XH-2024-0099', 'Killua Zoldyck', 'TRANSFORMADOR', 'Ativo', 'Montanha Kukuroo', '2011-07-07'),
@@ -77,7 +55,10 @@ INSERT INTO Cacador_Missao (fk_cacador, fk_missao) VALUES
 (2, 4),
 (4, 5);
 
-select * from Cacador;
+
+
+
+select * from cacador;
 
 ALTER TABLE Missao DROP FOREIGN KEY fk_missao_cacador;
 ALTER TABLE Missao DROP COLUMN fk_cacador;

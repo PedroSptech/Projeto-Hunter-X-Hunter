@@ -42,6 +42,11 @@ async function cadastrar() {
     const nomeVar = document.getElementById("nome_input").value;
     const nenVar = document.getElementById("nen_input").value;
     const codigoVar = document.getElementById("codigo_input").value;
+    const natalVar = document.getElementById("natal_input").value;
+    const dataVar = document.getElementById("date_input").value;
+    const tipoCacadorVar = document.getElementById("Tipo_cacador_input").value;
+    const rankigVar = document.getElementById("rankig_input").value;
+    const zodiacoVar = document.getElementById("zodiaco_input").value;
 
     if (nomeVar == "" || nenVar == "" || codigoVar == "") {
         alert("Por favor, preencha todos os campos para o registro na Associação Hunter.");
@@ -60,7 +65,12 @@ async function cadastrar() {
         body: JSON.stringify({
             nomeServer: nomeVar,
             tipoNenServer: nenVar,
-            codigoServer: codigoVar
+            codigoServer: codigoVar,
+            natalServer: natalVar,
+            dataServer: dataVar,
+            tipoCacadorServer: tipoCacadorVar,
+            rankigServer: rankigVar,
+            zodiacoServer:zodiacoVar
         })
     }).then(function (resposta) {
         console.log("Resposta do servidor: ", resposta);

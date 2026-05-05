@@ -4,40 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style ></style>
+    <style></style>
     <link rel="stylesheet" href="../css/registre.css">
 </head>
 <body>
     <a href="../index.html">
         <img src="../assets/seta_voltando.svg" alt="Seta para voltar" class="back-arrow">
     </a>
-    
+
     <h1>HUNTER X HUNTER</h1>
-    
-    <img src="../assets/login-logo.svg" alt="Logo da associação" class="logo">
 
-    <label for="nome_input">Insira seu nome:</label>
-<input type="text" id="nome_input" placeholder="Nome">
 
-<label for="nen_input">Escolha seu tipo de NEN:</label>
-<select id="nen_input">
-        <option value="TRANSFORMADOR">TRANSFORMADOR</option>
-        <option value="CONJURADOR">CONJURADOR</option>
-        <option value="EMISSOR">EMISSOR</option>
-        <option value="MANIPULADOR">MANIPULADOR</option>
-        <option value="ESPECIALISTA">ESPECIALISTA</option>
-        <option value="INTENSIFICADOR">INTENSIFICADOR</option>
-    </select>
-    
-<label for="codigo_input">Insira seu Código xHUNTERx</label>
-<input type="text" id="codigo_input" placeholder="Código xHUNTERx">
+    <div class="form-grid">
 
-<button onclick="cadastrar()">CADASTRAR</button>
-    
+        <div>
+            <label for="nome_input">Insira seu nome:</label>
+            <input type="text" id="nome_input" placeholder="Nome">
+        </div>
+
+        <div>
+            <label for="nen_input">Escolha seu tipo de NEN:</label>
+            <select id="nen_input">
+                <option value="TRANSFORMADOR">TRANSFORMADOR</option>
+                <option value="CONJURADOR">CONJURADOR</option>
+                <option value="EMISSOR">EMISSOR</option>
+                <option value="MANIPULADOR">MANIPULADOR</option>
+                <option value="ESPECIALISTA">ESPECIALISTA</option>
+                <option value="INTENSIFICADOR">INTENSIFICADOR</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="codigo_input">Insira seu Código xHUNTERx</label>
+            <input type="text" id="codigo_input" placeholder="Código xHUNTERx">
+        </div>
+
+        <div>
+            <label for="natal_input">Insira sua cidade natal</label>
+            <input type="text" id="natal_input" placeholder="Cidade Natal">
+        </div>
+
+        <div>
+            <label for="date_input">Data de nascimento:</label>
+            <input type="date" id="date_input">
+        </div>
+
+        <div>
+            <label for="Tipo_cacador_input">Você é qual tipo de caçador:</label>
+            <select id="Tipo_cacador_input">
+                <option value="Lista Negra">Lista Negra</option>
+                <option value="Gourmet">Gourmet</option>
+                <option value="Arqueólogo/Ruínas">Arqueólogo/Ruínas</option>
+                <option value="Talentos">Talentos</option>
+                <option value="Contrato">Contrato</option>
+                <option value="Músicas">Músicas</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="rankig_input">Ranking caçador:</label>
+            <select id="rankig_input">
+                <option value="Licenciado">Licenciado</option>
+                <option value="Single">Single</option>
+                <option value="Double">Double</option>
+                <option value="Triple">Triple</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="zodiaco_input">É zodíaco?</label>
+            <select id="zodiaco_input">
+                <option value="SIM">SIM</option>
+                <option value="NÃO">NÃO</option>
+            </select>
+        </div>
+
+    </div>
+
+    <button onclick="cadastrar()">CADASTRAR</button>
+
     <a href="./login.html">Já é Cadastrado?</a>
 
     <script src="../js/script.js"></script>
 </body>
 </html>
-
-        
