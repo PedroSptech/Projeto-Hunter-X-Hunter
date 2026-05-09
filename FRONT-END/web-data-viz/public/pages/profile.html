@@ -3,9 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <title>Perfil do Caçador</title>
 </head>
 <body>
-    <h1>OIIIIIIIIIIIIIIIIIIIIIIIIIIIII</h1>
+    <aside class="sidebar">
+        <div class="logo_imagem">
+            <img src="../assets/associação-hunter .png" alt="Logo da associação">
+        </div>
+        <div class="opcoes">
+            <a href="../pages/profile.html"><img src="../assets/profile.png" alt="">PERFIL</a>
+            <a href="#"><img src="../assets/search.png" alt="">PESQUISAR</a>
+            <a href="#"><img src="../assets/check.png" alt="">MISSÕES</a>
+            <a id="item-dashboard" href="#"><img src="../assets/dashboard.png" alt="">DASHBOARDS</a>
+            <a id="item-criar-missao" class="criar_missao" href="#"><img src="../assets/plus.png" alt="">CRIAR MISSÃO</a>
+        </div>
+        <a class="logout" href="../index.html"><img src="../assets/getout.png" alt="">SAIR</a>
+    </aside>
+
+    <div class="container-main">
+        <div class="Dados">
+
+            <div class="Fotos">
+                <img id="foto-perfil" alt="Foto do caçador" style="display:none;">
+                <div id="upload-container">
+                    <input type="text" id="url-foto" placeholder="Cole o link da imagem aqui">
+                    <button onclick="enviarFoto()">Salvar Foto</button>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="dados-info">
+                <p><span class="label">Código:</span> <span id="codigo">--</span></p>
+                <p><span class="label">Nome:</span> <span id="nome">--</span></p>
+                <p><span class="label">Nen:</span> <span id="nen">--</span></p>
+                <p><span class="label">Cidade Natal:</span> <span id="cidade">--</span></p>
+                <p><span class="label">Data de Nascimento:</span> <span id="dtNasc">--</span></p>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../js/sidebar.js"></script>
+    <script>
+        var idCacador = localStorage.getItem("idCacador");
+
+        function carregarPerfil() {
+            if (!idCacador) {
+                alert("Você não está logado. Faça login primeiro.");
+                window.location.href = "../index.html";
+                return;
+            }
+
+            fetch("/cacadores/perfil/" + idCacador)
+                .then(function (response) { return response.json(); })
+                .then(function (dados) {
+                    document.getElementById("codigo").textContent = dados.codigo;
+                    document.getElementById("nome").textContent   = dados.nome;
+                    document.getElementById("nen").textContent    = dados.nen;
+                    document.getElementById("cidade").textContent = dados.cidadeNatal;
+
+                    var data = new Date(dados.dtNasc);
+                    document.getElementById("dtNasc").textContent = data.toLocaleDateString("pt-BR");
+
+                    if (dados.foto && dados.foto != "") {
+                        document.getElementById("foto-perfil").src            = dados.foto;
+                        document.getElementById("foto-perfil").style.display  = "block";
+                        document.getElementById("upload-container").style.display = "none";
+                    } else {
+                        document.getElementById("foto-perfil").style.display  = "none";
+                        document.getElementById("upload-container").style.display = "flex";
+                    }
+                })
+                .catch(function (erro) { console.log("Erro ao carregar perfil:", erro); });
+        }
+
+        function enviarFoto() {
+            var url = document.getElementById("url-foto").value;
+            if (url == "") { alert("Cole um link de imagem primeiro!"); return; }
+
+            fetch("/cacadores/foto/" + idCacador, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ fotoServer: url })
+            })
+            .then(function (resposta) { return resposta.json(); })
+            .then(function () {
+                alert("Foto salva!");
+                document.getElementById("foto-perfil").src            = url;
+                document.getElementById("foto-perfil").style.display  = "block";
+                document.getElementById("upload-container").style.display = "none";
+            })
+            .catch(function (erro) { console.log("Erro ao salvar foto:", erro); });
+        }
+
+        carregarPerfil();
+    </script>
 </body>
 </html>

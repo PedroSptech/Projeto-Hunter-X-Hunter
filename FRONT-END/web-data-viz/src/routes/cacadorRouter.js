@@ -4,10 +4,16 @@ var cacadorController = require("../controllers/cacadorController");
 
 router.post("/cadastrar", function (req, res) {
     cacadorController.cadastrar(req, res);
-})
+});
 
 router.post("/autenticar", function (req, res) {
     cacadorController.autenticar(req, res);
 });
+
+router.get("/perfil/:id", cacadorController.buscarPerfil);
+
+router.post("/foto/:id", cacadorController.enviarFoto);
+
+router.get("/foto/:id", cacadorController.receberFoto);
 
 module.exports = router;

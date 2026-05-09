@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container-main {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.Dados {
+    background-color: #FFFFFF;
+    width: 65%;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 40px;
+    gap: 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.Fotos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex: 1;
+    padding: 20px;
+}
+
+#foto-perfil {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+#upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+#url-foto {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 13px;
+    outline: none;
+}
+
+#upload-container button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+hr {
+    width: 1px;
+    height: 280px;
+    background-color: #E0E0E0;
+    border: none;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.dados-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 20px 30px;
+}
+
+.dados-info p {
+    font-size: 16px;
+    color: #333;
+    border-bottom: 1px solid #F0F0F0;
+    padding-bottom: 12px;
+}
+
+.dados-info p:last-child {
+    border-bottom: none;
+}
+
+.label {
+    font-weight: bold;
+    color: #AC2B2B;
+    margin-right: 8px;
+}
