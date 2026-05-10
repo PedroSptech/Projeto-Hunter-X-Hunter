@@ -43,10 +43,20 @@ function receberFoto(idCacador) {
     return database.executar(instrucaoSql);
 }
 
+function buscarPorNome(nome) {
+    var instrucaoSql = `
+        SELECT idCacador, nome_Cacador, Tipo_Nen, cidade_natal, Ranking_cacador, Tipo_cacador, Zodiaco
+        FROM Cacador
+        WHERE nome_Cacador LIKE '%${nome}%';
+    `;
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
     buscarPerfil,
     enviarFoto,
-    receberFoto
+    receberFoto,
+    buscarPorNome
 };

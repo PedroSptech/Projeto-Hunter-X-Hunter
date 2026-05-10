@@ -104,10 +104,28 @@ function receberFoto(req, res) {
         .catch(function (erro) { res.status(500).json(erro.sqlMessage); });
 }
 
+function buscarPorNome(req, res) {
+    var nome = req.query.nome;
+ 
+    if (!nome || nome.trim() === "") {
+        return res.status(400).send("Nome para pesquisa não informado!");
+    }
+ 
+    cacadorModel.buscarPorNome(nome.trim())
+        .then(function (resultado) {
+            res.json(resultado);
+        })
+        .catch(function (erro) {
+            console.log("ERRO MYSQL:", erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+ 
 module.exports = {
     autenticar,
     cadastrar,
     buscarPerfil,
     enviarFoto,
-    receberFoto
+    receberFoto,
+    buscarPorNome
 };

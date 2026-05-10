@@ -16,4 +16,6 @@ router.post("/foto/:id", cacadorController.enviarFoto);
 
 router.get("/foto/:id", cacadorController.receberFoto);
 
+router.get("/buscar", cacadorController.buscarPorNome);
+
 module.exports = router;

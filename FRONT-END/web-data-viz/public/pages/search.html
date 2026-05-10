@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/search.css">
+    <title>Pesquisar Hunter</title>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo_imagem">
+            <img src="../assets/associação-hunter .png" alt="Logo da associação">
+        </div>
+        <div class="opcoes">
+            <a href="../pages/profile.html"><img src="../assets/profile.png" alt="">PERFIL</a>
+            <a href="../pages/search.html"><img src="../assets/search.png" alt="">PESQUISAR</a>
+            <a href="#"><img src="../assets/check.png" alt="">MISSÕES</a>
+            <a id="item-dashboard" href="#"><img src="../assets/dashboard.png" alt="">DASHBOARDS</a>
+            <a id="item-criar-missao" class="criar_missao" href="#"><img src="../assets/plus.png" alt="">MISSÕES</a>
+        </div>
+        <a class="logout" href="../index.html"><img src="../assets/getout.png" alt="">SAIR</a>
+    </aside>
+
+    <div class="search_container">
+        <div class="search_bar">
+            <input type="text" id="pesquisa" placeholder="DIGITE O HUNTER A SER PESQUISADO" onkeydown="teclaEnter(event)">
+            <button onclick="pesquisar()">PESQUISAR</button>
+        </div>
+        <div id="resultado"></div>
+    </div>
+
+    <script src="../js/sidebar.js"></script>
+    <script>
+        function teclaEnter(event) {
+            if (event.key === "Enter") pesquisar();
+        }
+
+        function pesquisar() {
+            var nome = document.getElementById("pesquisa").value.trim();
+            var divResultado = document.getElementById("resultado");
+
+            if (nome === "") {
+                divResultado.innerHTML = "<p class='aviso'>Digite um nome para pesquisar.</p>";
+                return;
+            }
+
+            divResultado.innerHTML = "<p class='carregando'>Pesquisando...</p>";
+
+            //converte caracteres especiais como espaços e acentos para formato seguro de URL
+            fetch("/cacadores/buscar?nome=" + encodeURIComponent(nome))
+                .then(function (resposta) {
+                    if (!resposta.ok) throw new Error("Erro na requisição");
+                    return resposta.json();
+                })
+                .then(function (cacadores) {
+                    if (cacadores.length === 0) {
+                        divResultado.innerHTML = "<p class='aviso'>Nenhum hunter encontrado com esse nome.</p>";
+                        return;
+                    }
+
+                    var html = "<div class='grid_resultado'>";
+                    cacadores.forEach(function (c) {
+                        html += `
+                            <div class="card_cacador">
+                                <div class="card_header">
+                                    <span class="card_ranking">#${c.Ranking_cacador || "?"}</span>
+                                    <span class="card_nen ${(c.Tipo_Nen || "").toLowerCase()}">${c.Tipo_Nen || "—"}</span>
+                                </div>
+                                <h2 class="card_nome">${c.nome_Cacador}</h2>
+                                <div class="card_info">
+                                    <span>Cidade Natal: ${c.cidade_natal || "Desconhecida"}</span>
+                                    <span>Tipo de Caçador: ${c.Tipo_cacador || "—"}</span>
+                                    <span>Zodiaco: ${c.Zodiaco || "—"}</span>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    html += "</div>";
+                    divResultado.innerHTML = html;
+                })
+                .catch(function (erro) {
+                    divResultado.innerHTML = "<p class='aviso erro'>Erro ao buscar hunters. Tente novamente.</p>";
+                    console.error(erro);
+                });
+        }
+    </script>
+</body>
+</html>

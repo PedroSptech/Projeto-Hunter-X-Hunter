@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    background-color: #0d0d0d;
+    font-family: "Karantina", system-ui;
+    color: #fff;
+    display: flex;
+}
+
+.search_container {
+    flex: 1;
+    margin-left: 220px;
+    padding: 40px 32px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.search_bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.search_bar input {
+    flex: 1;
+    padding: 14px 20px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search_bar input:focus {
+    border-color: #c8a84b;
+}
+
+.search_bar button {
+    padding: 14px 28px;
+    background: #c8a84b;
+    border: none;
+    border-radius: 8px;
+    color: #0d0d0d;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.search_bar button:hover {
+    background: #e0c060;
+}
+
+.aviso {
+    color: #888;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.aviso.erro {
+    color: #e05555;
+}
+
+.carregando {
+    color: #c8a84b;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.grid_resultado {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.card_cacador {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 20px;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.card_cacador:hover {
+    border-color: #c8a84b;
+    transform: translateY(-3px);
+}
+
+.card_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.card_ranking {
+    font-size: 13px;
+    color: #c8a84b;
+    font-weight: 700;
+}
+
+.card_nen {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #2a2a2a;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card_nome {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 14px 0;
+    color: #fff;
+}
+
+.card_info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+    color: #999;
+}
