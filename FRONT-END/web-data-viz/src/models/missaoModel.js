@@ -8,6 +8,7 @@ function listarPorCacador(idCacador) {
             m.nome_missao, 
             m.Descricao_missao, 
             m.status_Missao,
+            m.grau_dificuldade,
         DATE_FORMAT(m.dt_missao, '%d/%m/%Y') AS data,
             c.nome_Cacador,
             c.Tipo_Nen
@@ -18,21 +19,22 @@ function listarPorCacador(idCacador) {
     return database.executar(instrucaoSql);
 }
 
-function publicar(nome, descricao, dtMissao, idCacador) {
+function publicar(nome, descricao, status, grauDificuldade, dtMissao) {
     console.log("ACESSEI O MISSAO MODEL \n function publicar()");
     var instrucaoSql = `
-        INSERT INTO Missao (nome_missao, Descricao_missao, status_Missao, dt_missao, fk_cacador) 
-        VALUES ('${nome}', '${descricao}', 'Pendente', '${dtMissao}', ${idCacador});
+        INSERT INTO Missao (nome_missao, Descricao_missao, status_Missao, dt_missao, grau_dificuldade) 
+        VALUES ('${nome}', '${descricao}', '${status}', '${dtMissao}', '${grauDificuldade}');
     `;
     return database.executar(instrucaoSql);
 }
 
 function vincular(idCacador, idMissao) {
+    console.log("ACESSEI O MISSAO MODEL \n function vincular()");
     let instrucao = `
         INSERT INTO Cacador_Missao (fk_cacador, fk_missao) 
         VALUES (${idCacador}, ${idMissao});
     `;
-    return executar(instrucao);
+    return database.executar(instrucao);
 }
 
 module.exports = {

@@ -47,7 +47,7 @@ CREATE TABLE Cacador_Missao (
     fk_missao  INT NOT NULL,
     PRIMARY KEY (fk_cacador, fk_missao),
     CONSTRAINT fk_missao_cacador FOREIGN KEY (fk_cacador) REFERENCES Cacador(idCacador),
-    FOREIGN KEY (fk_missao) REFERENCES Missao(idMissao)
+    CONSTRAINT Cacador_Missao_ibfk_2 FOREIGN KEY (fk_missao) REFERENCES Missao(idMissao)
 );
 
 INSERT INTO Cacador (Codigo_caçador, nome_Cacador, Tipo_Nen, Status_cacador, cidade_natal, dt_Nasc, Tipo_cacador, Ranking_cacador, Zodiaco) VALUES

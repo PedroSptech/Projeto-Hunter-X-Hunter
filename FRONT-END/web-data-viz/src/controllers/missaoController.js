@@ -17,20 +17,22 @@ function listarPorCacador(req, res) {
 
 function publicar(req, res) {
     var nome = req.body.nome;
-    var descricao = req.body.descricao;
+    var descricao = req.body.descricao || "";
+    var status = req.body.status;
+    var grauDificuldade = req.body.grauDificuldade;
     var data = req.body.data;
-    var idCacador = req.body.idCacador;
 
-    if (nome == undefined) {
-        res.status(400).send("O nome da missão está undefined!");
-    } else {
-        missaoModel.publicar(nome, descricao, data, idCacador)
-            .then(function (resultado) {
-                res.json(resultado);
-            }).catch(function (erro) {
-                res.status(500).json(erro.sqlMessage);
-            });
+    if (!nome || !status || !grauDificuldade || !data) {
+        return res.status(400).send("Campos obrigatórios não preenchidos!");
     }
+
+    missaoModel.publicar(nome, descricao, status, grauDificuldade, data)
+        .then(function (resultado) {
+            res.status(201).json(resultado);
+        }).catch(function (erro) {
+            console.log("ERRO COMPLETO:", erro); // ← vai mostrar o erro real
+            res.status(500).json(erro.sqlMessage || erro.message || erro);
+        });
 }
 
 function vincular(req, res) {

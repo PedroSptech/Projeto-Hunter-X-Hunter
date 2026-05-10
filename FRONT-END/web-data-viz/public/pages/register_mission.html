@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/register-mission.css">
+    <title>Cadastrar Missão</title>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo_imagem">
+            <img src="../assets/associação-hunter .png" alt="Logo da associação">
+        </div>
+        <div class="opcoes">
+            <a href="../pages/profile.html"><img src="../assets/profile.png" alt="">PERFIL</a>
+            <a href="../pages/search.html"><img src="../assets/search.png" alt="">PESQUISAR</a>
+            <a href="#"><img src="../assets/check.png" alt="">MISSÕES</a>
+            <a id="item-dashboard" href="#"><img src="../assets/dashboard.png" alt="">DASHBOARDS</a>
+            <a id="item-criar-missao" class="criar_missao" href="../pages/register_mission.html"><img src="../assets/plus.png" alt="">CRIAR MISSÃO</a>
+        </div>
+        <a class="logout" href="../index.html"><img src="../assets/getout.png" alt="">SAIR</a>
+    </aside>
+
+    <div class="cadastro_container">
+        <div class="cadastro_header">
+            <h1>CADASTRAR MISSÃO</h1>
+            <p>Preencha todos os campos para registrar uma nova missão</p>
+        </div>
+
+        <div class="form_card">
+            <div id="alerta" class="alerta hidden"></div>
+
+            <div class="form_grid">
+                <div class="form_group full_width">
+                    <label for="nome_missao">NOME DA MISSÃO <span class="obrigatorio">*</span></label>
+                    <input type="text" id="nome_missao" placeholder="Ex: Exploração de Greed Island" maxlength="100">
+                </div>
+
+                <div class="form_group full_width">
+                    <label for="descricao">DESCRIÇÃO</label>
+                    <textarea id="descricao" placeholder="Descreva os objetivos e detalhes da missão..." maxlength="250" rows="4"></textarea>
+                    <span class="char_count"><span id="contador">0</span>/250</span>
+                </div>
+
+                <div class="form_group">
+                    <label for="status_missao">STATUS <span class="obrigatorio">*</span></label>
+                    <select id="status_missao">
+                        <option value="" disabled selected>Selecione o status</option>
+                        <option value="Pendente">Pendente</option>
+                        <option value="Em Andamento">Em Andamento</option>
+                        <option value="Concluída">Concluída</option>
+                        <option value="Cancelada">Cancelada</option>
+                    </select>
+                </div>
+
+                <div class="form_group">
+                    <label for="grau_dificuldade">GRAU DE DIFICULDADE <span class="obrigatorio">*</span></label>
+                    <select id="grau_dificuldade">
+                        <option value="" disabled selected>Selecione o grau</option>
+                        <option value="C">C — Iniciante</option>
+                        <option value="B">B — Intermediário</option>
+                        <option value="A">A — Avançado</option>
+                        <option value="S">S — Elite</option>
+                        <option value="S+">S+ — Lendário</option>
+                    </select>
+                </div>
+
+                <div class="form_group">
+                    <label for="dt_missao">DATA DA MISSÃO <span class="obrigatorio">*</span></label>
+                    <input type="date" id="dt_missao">
+                </div>
+            </div>
+
+            <div class="form_actions">
+                <button class="btn_cancelar" onclick="limparFormulario()">LIMPAR</button>
+                <button class="btn_cadastrar" onclick="cadastrarMissao()">CADASTRAR MISSÃO</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/sidebar.js"></script>
+    <script>
+        const textarea = document.getElementById("descricao");
+        const contador = document.getElementById("contador");
+
+        textarea.addEventListener("input", function () {
+            contador.textContent = this.value.length;
+        });
+
+        function mostrarAlerta(mensagem, tipo) {
+            var alerta = document.getElementById("alerta");
+            alerta.textContent = mensagem;
+            alerta.className = "alerta " + tipo;
+            alerta.classList.remove("hidden");
+            setTimeout(() => alerta.classList.add("hidden"), 4000);
+        }
+
+        function limparFormulario() {
+            document.getElementById("nome_missao").value = "";
+            document.getElementById("descricao").value = "";
+            document.getElementById("status_missao").value = "";
+            document.getElementById("grau_dificuldade").value = "";
+            document.getElementById("dt_missao").value = "";
+            contador.textContent = "0";
+        }
+
+        function cadastrarMissao() {
+            var nome = document.getElementById("nome_missao").value.trim();
+            var descricao = document.getElementById("descricao").value.trim();
+            var status = document.getElementById("status_missao").value;
+            var grau = document.getElementById("grau_dificuldade").value;
+            var data = document.getElementById("dt_missao").value;
+
+            if (!nome || !status || !grau || !data) {
+                mostrarAlerta("Preencha todos os campos obrigatórios.", "erro");
+                return;
+            }
+
+            var btn = document.querySelector(".btn_cadastrar");
+            btn.textContent = "CADASTRANDO...";
+            btn.disabled = true;
+
+            fetch("/missoes/publicar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    nome: nome,
+                    descricao: descricao,
+                    status: status,
+                    grauDificuldade: grau,
+                    data: data
+                })
+            })
+            .then(function (resposta) {
+                if (!resposta.ok) throw new Error("Erro ao cadastrar");
+                return resposta.json();
+            })
+            .then(function () {
+                mostrarAlerta("Missão cadastrada com sucesso!", "sucesso");
+                limparFormulario();
+            })
+            .catch(function (erro) {
+                mostrarAlerta("Erro ao cadastrar a missão. Tente novamente.", "erro");
+                console.error(erro);
+            })
+            .finally(function () {
+                btn.textContent = "CADASTRAR MISSÃO";
+                btn.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
