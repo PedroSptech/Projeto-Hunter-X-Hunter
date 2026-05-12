@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: #0d0d0d;
+    background-color: #CCC;
     font-family: "Karantina", system-ui;
     color: #fff;
     display: flex;
@@ -34,12 +34,12 @@ body {
 }
 
 .search_bar input:focus {
-    border-color: #c8a84b;
+    border-color: #C42037;
 }
 
 .search_bar button {
     padding: 14px 28px;
-    background: #c8a84b;
+    background: #C42037;
     border: none;
     border-radius: 8px;
     color: #0d0d0d;
@@ -51,7 +51,8 @@ body {
 }
 
 .search_bar button:hover {
-    background: #e0c060;
+    background: #ff0022;
+;
 }
 
 .aviso {
@@ -66,7 +67,7 @@ body {
 }
 
 .carregando {
-    color: #c8a84b;
+    color: #C42037;
     font-size: 15px;
     text-align: center;
     margin-top: 40px;
@@ -87,7 +88,7 @@ body {
 }
 
 .card_cacador:hover {
-    border-color: #c8a84b;
+    border-color: #C42037;
     transform: translateY(-3px);
 }
 
@@ -100,7 +101,7 @@ body {
 
 .card_ranking {
     font-size: 13px;
-    color: #c8a84b;
+    color: #C42037;
     font-weight: 700;
 }
 

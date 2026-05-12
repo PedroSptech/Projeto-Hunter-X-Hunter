@@ -86,6 +86,7 @@ select {
 select option {
     background-color: #303030;
     color: white;
+    display: flex;
     font-family: "Karantina", sans-serif;
 }
 
