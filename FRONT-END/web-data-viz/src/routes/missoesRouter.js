@@ -14,4 +14,8 @@ router.post("/vincular", function(req, res) {
     missaoController.vincular(req, res);
 });
 
+router.get("/missoes", function(req, res){
+    missaoController.missoes(req, res);
+}) 
+
 module.exports = router;

@@ -42,8 +42,19 @@ function vincular(req, res) {
         .catch(erro => res.status(500).json(erro.sqlMessage));
 }
 
+function missoes(req, res){
+    missaoModel.missoes()
+    .then(function(resultado) {
+        res.status(200).json(resultado);
+    }).catch(function (erro){
+        console.log("Erro Missão:", erro); 
+            res.status(500).json(erro.sqlMessage || erro.message || erro)
+    })
+}
+
 module.exports = {
     listarPorCacador,
     publicar,
-    vincular
+    vincular,
+    missoes
 }

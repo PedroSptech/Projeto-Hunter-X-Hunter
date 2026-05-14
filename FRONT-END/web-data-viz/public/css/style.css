@@ -198,6 +198,7 @@ header {
     height: 0;
 }
 .hunter.netero, .hunter.pariston {
+    /*    flex-grow -> flex-shrink: o item pode encolher para caber -> flex-basis => 40% da largura do pai*/
     flex: 0 1 40%; 
     max-width: 300px; 
 }
