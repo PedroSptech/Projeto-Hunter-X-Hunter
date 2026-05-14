@@ -53,6 +53,7 @@ button {
     padding: 15px 60px;
     border-radius: 8px;
     cursor: pointer;
+    /*Força a herdar a fonte do elemento pai*/
     font-family: inherit;
     font-size: 15px;
     margin-bottom: 15px;

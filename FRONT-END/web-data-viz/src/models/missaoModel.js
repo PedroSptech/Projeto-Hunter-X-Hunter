@@ -37,8 +37,17 @@ function vincular(idCacador, idMissao) {
     return database.executar(instrucao);
 }
 
+function missoes(){
+    console.log("ACESSEI O MISSAO MODEL \n function missoes()");
+    let instrucao = `
+    SELECT m.idMissao, m.nome_missao, m.Descricao_missao, m.status_Missao, m.dt_missao, grau_dificuldade FROM Missao AS m;
+    `
+    return database.executar(instrucao);
+}
+
 module.exports = {
     listarPorCacador,
     publicar,
-    vincular
+    vincular,
+    missoes
 }

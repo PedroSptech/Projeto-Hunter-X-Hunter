@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/sidebar.css">
-    <title>Sidebar</title>
+    <link rel="stylesheet" href="../css/acept_mission.css">
+    <title>Document</title>
 </head>
 <body>
+    <body>
     <aside class="sidebar">
         <div class="logo_imagem">
             <img src="../assets/associação-hunter .png" alt="Logo da associação">
@@ -15,10 +17,16 @@
             <a href="../pages/profile.html"><img src="../assets/profile.png" alt="">PERFIL</a>
             <a href="../pages/search.html"><img src="../assets/search.png" alt="">PESQUISAR</a>
             <a href="../pages/accept_mission.html"><img src="../assets/check.png" alt="">MISSÕES</a>
-            <a href="#"><img src="../assets/dashboard.png" alt="">DASHBOARDS</a>
-            <a class="criar_missao" href="../pages/register_mission.html"><img src="../assets/plus.png" alt="">MISSÕES</a>
+            <a id="item-dashboard" href="#"><img src="../assets/dashboard.png" alt="">DASHBOARDS</a>
+            <a id="item-criar-missao" class="criar_missao" href="../pages/register_mission.html"><img src="../assets/plus.png" alt="">MISSÕES</a>
         </div>
         <a class="logout" href="../index.html"><img src="../assets/getout.png" alt="">SAIR</a>
     </aside>
+
+    <div class="search_container">
+        <div id="resultado"></div>
+    </div>
 </body>
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/script.js"></script>
 </html>
