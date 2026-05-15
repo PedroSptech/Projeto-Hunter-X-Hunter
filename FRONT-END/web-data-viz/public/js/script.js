@@ -22,7 +22,7 @@ async function entrar() {
             }
         })
         .then(dados => {
-            if (dados) {
+            if (dados) {                        //Tranforma os dados em String o localStorage não entende um objeto json
                 localStorage.setItem("cacador", JSON.stringify(dados));
                 localStorage.setItem("idCacador", dados.id);
                 alert("Bem-vindo à Associação!");
@@ -95,6 +95,7 @@ async function cadastrar() {
 }
 
 function teclaEnter(event) {
+    // a tecla de enter é um evento e quando clica no botão chama o pesquisar()
     if (event.key === "Enter") pesquisar();
 }
 
@@ -109,10 +110,11 @@ function pesquisar() {
 
     divResultado.innerHTML = "<p class='carregando'>Pesquisando...</p>";
 
-    //converte caracteres especiais como espaços e acentos para formato seguro de URL
-    fetch("/cacadores/buscar?nome=" + encodeURIComponent(nome))
+    fetch("/cacadores/buscar?nome=" + (nome))
         .then(function (resposta) {
-            if (!resposta.ok) throw new Error("Erro na requisição");
+            if (!resposta.ok){
+                console.log("Erro na requisição")
+            };
             return resposta.json();
         })
         .then(function (cacadores) {
@@ -143,7 +145,7 @@ function pesquisar() {
         })
         .catch(function (erro) {
             divResultado.innerHTML = "<p class='aviso erro'>Erro ao buscar hunters. Tente novamente.</p>";
-            console.error(erro);
+            console.log(erro);
         });
 }
 const textarea = document.getElementById("descricao");
@@ -193,7 +195,9 @@ function cadastrarMissao() {
         })
     })
         .then(function (resposta) {
-            if (!resposta.ok) throw new Error("Erro ao cadastrar");
+            if (!resposta.ok){
+                console.log("Erro ao cadastrar");
+            }
             return resposta.json();
         })
         .then(function () {
@@ -202,7 +206,7 @@ function cadastrarMissao() {
         })
         .catch(function (erro) {
             mostrarAlerta("Erro ao cadastrar a missão. Tente novamente.", "erro");
-            console.error(erro);
+            console.log(erro);
         })
         .finally(function () {
             btn.textContent = "CADASTRAR MISSÃO";
@@ -244,7 +248,10 @@ function carregarPerfil() {
 
 function enviarFoto() {
     var url = document.getElementById("url-foto").value;
-    if (url == "") { alert("Cole um link de imagem primeiro!"); return; }
+    if (url == "") { 
+        alert("Cole um link de imagem primeiro!"); 
+        return; 
+    }
 
     fetch("/cacadores/foto/" + idCacador, {
         method: "POST",
@@ -262,44 +269,63 @@ function enviarFoto() {
 }
 
 function carregarMissoes() {
-    const resultado = document.getElementById("resultado")
-    resultado.innerHTML = `<p class='carregando'> Carregando Missões. . . </p>`
+    const resultado = document.getElementById("resultado");
+    resultado.innerHTML = `<p class='carregando'> Carregando Missões. . . </p>`;
 
     fetch("/missoes/missoes")
         .then(function (res) { return res.json(); })
         .then(function (dados) {
             if (dados.length === 0) {
-                resultado.innerHTML = `<p class='aviso'>NENHUMA MISSÃO CADASTRADA.</p>`
-                return
+                resultado.innerHTML = `<p class='aviso'>NENHUMA MISSÃO CADASTRADA.</p>`;
+                return;
             }
-            var html = "<div class='grid_resultado'>"
+
+            var html = "<div class='grid_resultado'>";
+
             dados.forEach(function (missao) {
                 var data = missao.dt_missao ? new Date(missao.dt_missao).toLocaleDateString("pt-BR") : "—";
 
-                html += `
-                    <div class="card_missao">
-                        <div class="card_header">
-                            <span class="card_dificuldade ${missao.grau_dificuldade ? missao.grau_dificuldade.toLowerCase() : ''}">${missao.grau_dificuldade || "—"}</span>
-                            <span class="card_status">${missao.status_Missao || "—"}</span>
+                if (missao.status_Missao == 'Concluída') {
+                    html += `
+                        <div class="card_missao">
+                            <div class="card_header">
+                                <span class="card_dificuldade ${missao.grau_dificuldade ? missao.grau_dificuldade.toLowerCase() : ''}">${missao.grau_dificuldade || "—"}</span>
+                                <span class="card_status">${missao.status_Missao || "—"}</span>
+                            </div>
+                            <p class="card_nome">${missao.nome_missao}</p>
+                            <p class="card_descricao">${missao.Descricao_missao || "Sem descrição."}</p>
+                            <p class="card_data">${data}</p>
+                            <div class="card_acoes"></div>
                         </div>
-                        <p class="card_nome">${missao.nome_missao}</p>
-                        <p class="card_descricao">${missao.Descricao_missao || "Sem descrição."}</p>
-                        <p class="card_data"> ${data}</p>
-                        <div class="card_acoes">
-                            <button class="btn_aceitar" onclick="aceitarMissao('${missao.idMissao}')">ACEITAR</button>
-                            <button class="btn_negar" onclick="negarMissao('${missao.idMissao}')">NEGAR</button>
+                    `;
+                } else {
+                    html += `
+                        <div class="card_missao">
+                            <div class="card_header">
+                                <span class="card_dificuldade ${missao.grau_dificuldade ? missao.grau_dificuldade.toLowerCase() : ''}">${missao.grau_dificuldade || "—"}</span>
+                                <span class="card_status">${missao.status_Missao || "—"}</span>
+                            </div>
+                            <p class="card_nome">${missao.nome_missao}</p>
+                            <p class="card_descricao">${missao.Descricao_missao || "Sem descrição."}</p>
+                            <p class="card_data">${data}</p>
+                            <div class="card_acoes">
+                                <button class="btn_aceitar" onclick="aceitarMissao('${missao.idMissao}')">ACEITAR</button>
+                                <button class="btn_negar" onclick="negarMissao('${missao.idMissao}')">NEGAR</button>
+                            </div>
                         </div>
-                    </div>
-                `;
+                    `;
+                }
             });
+
             html += "</div>";
             resultado.innerHTML = html;
         })
         .catch(function () {
             resultado.innerHTML = `<p class='aviso erro'>ERRO AO CARREGAR MISSÕES.</p>`;
-        })
+        });
 }
 
+//resolve o problema de iniciar em todo o arquivo html
 window.onload = function () {
     if (document.getElementById("resultado") && !document.getElementById("pesquisa")) {
         carregarMissoes();
@@ -320,7 +346,10 @@ function aceitarMissao(idMissao) {
         body: JSON.stringify({ idCacador: idCacador, idMissao: idMissao })
     })
         .then(function (res) {
-            if (!res.ok) throw new Error("Erro ao aceitar missão");
+            if (!res.ok){
+                    
+                console.log("Erro ao aceitar missão");
+            }
             return res.json();
         })
         .then(function () {

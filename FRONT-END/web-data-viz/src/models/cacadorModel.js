@@ -52,11 +52,21 @@ function buscarPorNome(nome) {
     return database.executar(instrucaoSql);
 }
 
+function contarPorTipoNen() {
+    var instrucaoSql = `
+        SELECT Tipo_Nen, COUNT(*) AS quantidade
+        FROM Cacador
+        GROUP BY Tipo_Nen;
+    `;
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
     buscarPerfil,
     enviarFoto,
     receberFoto,
-    buscarPorNome
+    buscarPorNome,
+    contarPorTipoNen
 };

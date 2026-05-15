@@ -120,6 +120,17 @@ function buscarPorNome(req, res) {
             res.status(500).json(erro.sqlMessage);
         });
 }
+
+function contarPorTipoNen(req, res) {
+    cacadorModel.contarPorTipoNen()
+        .then(function (resultado) {
+            res.json(resultado);
+        })
+        .catch(function (erro) {
+            console.log("ERRO MYSQL:", erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
  
 module.exports = {
     autenticar,
@@ -127,5 +138,6 @@ module.exports = {
     buscarPerfil,
     enviarFoto,
     receberFoto,
-    buscarPorNome
+    buscarPorNome,
+    contarPorTipoNen
 };

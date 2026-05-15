@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../css/acept_mission.css">
+    <link rel="stylesheet" href="../css/dash.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <body>
     <aside class="sidebar">
         <div class="logo_imagem">
             <img src="../assets/associação-hunter .png" alt="Logo da associação">
@@ -22,11 +22,13 @@
         </div>
         <a class="logout" href="../index.html"><img src="../assets/getout.png" alt="">SAIR</a>
     </aside>
-
-    <div class="search_container">
-        <div id="resultado"></div>
+    
+    <div class="bar-chart">
+        <canvas id="myChart"></canvas>
     </div>
+
 </body>
-    <script src="../js/sidebar.js"></script>
-    <script src="../js/script.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/dash.js"></script> 
 </html>
