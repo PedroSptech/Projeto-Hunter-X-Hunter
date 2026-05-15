@@ -18,4 +18,6 @@ router.get("/foto/:id", cacadorController.receberFoto);
 
 router.get("/buscar", cacadorController.buscarPorNome);
 
+router.get("/nen/tipos", cacadorController.contarPorTipoNen);
+
 module.exports = router;

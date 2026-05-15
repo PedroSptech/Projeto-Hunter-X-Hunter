@@ -36,7 +36,8 @@ function publicar(req, res) {
 }
 
 function vincular(req, res) {
-    let { idCacador, idMissao } = req.body;
+    const idCacador = req.body.idCacador;
+    const idMissao = req.body.idMissao;
     missaoModel.vincular(idCacador, idMissao)
         .then(resultado => res.json(resultado))
         .catch(erro => res.status(500).json(erro.sqlMessage));
