@@ -58,13 +58,18 @@ function plotarGraficoNen(resposta) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
             scales: {
                 y: {
                     beginAtZero: true,
                     // de quanto em quanto a coluna y do grafico vai contar
                     ticks: { stepSize: 1 }
                 }
-            }
+            }   
         }
     });
 }

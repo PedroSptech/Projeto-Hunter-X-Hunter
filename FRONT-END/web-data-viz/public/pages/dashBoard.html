@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Document</title>
 </head>
+
 <body>
     <aside class="sidebar">
         <div class="logo_imagem">
@@ -17,18 +19,30 @@
             <a href="../pages/profile.html"><img src="../assets/profile.png" alt="">PERFIL</a>
             <a href="../pages/search.html"><img src="../assets/search.png" alt="">PESQUISAR</a>
             <a href="../pages/accept_mission.html"><img src="../assets/check.png" alt="">MISSÕES</a>
-            <a id="item-dashboard" href="../pages/dashBoard.html"><img src="../assets/dashboard.png" alt="">DASHBOARDS</a>
-            <a id="item-criar-missao" class="criar_missao" href="../pages/register_mission.html"><img src="../assets/plus.png" alt="">MISSÕES</a>
+            <a id="item-dashboard" href="../pages/dashBoard.html"><img src="../assets/dashboard.png"
+                    alt="">DASHBOARDS</a>
+            <a id="item-criar-missao" class="criar_missao" href="../pages/register_mission.html"><img
+                    src="../assets/plus.png" alt="">MISSÕES</a>
         </div>
         <a class="logout" href="../index.html"><img src="../assets/getout.png" alt="">SAIR</a>
     </aside>
-    
-    <div class="bar-chart">
-        <canvas id="myChart"></canvas>
+    <div class="Charts">
+
+        <div class="bar-chart">
+            <h1>QUANTIDADE DE CADA NEN</h1>
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <div class="donut-chart">
+            <h1>STATUS DOS CAÇADORES</h1>
+            <canvas id="statusChart"></canvas>
+        </div>
     </div>
 
 </body>
 <script src="../js/sidebar.js"></script>
 <script src="../js/script.js"></script>
-<script src="../js/dash.js"></script> 
+<script src="../js/dash.js"></script>
+<script src="../js/status_dash.js"></script>
+
 </html>

@@ -20,4 +20,6 @@ router.get("/buscar", cacadorController.buscarPorNome);
 
 router.get("/nen/tipos", cacadorController.contarPorTipoNen);
 
+router.get("/status", cacadorController.contarPorStatus);
+
 module.exports = router;

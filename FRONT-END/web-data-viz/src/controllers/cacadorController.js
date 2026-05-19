@@ -131,6 +131,17 @@ function contarPorTipoNen(req, res) {
             res.status(500).json(erro.sqlMessage);
         });
 }
+
+function contarPorStatus(req, res) {
+    cacadorModel.contarPorStatus()
+        .then(function (resultado) {
+            res.json(resultado);
+        })
+        .catch(function (erro) {
+            console.log("ERRO MYSQL:", erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
  
 module.exports = {
     autenticar,
@@ -139,5 +150,6 @@ module.exports = {
     enviarFoto,
     receberFoto,
     buscarPorNome,
-    contarPorTipoNen
+    contarPorTipoNen,
+    contarPorStatus
 };

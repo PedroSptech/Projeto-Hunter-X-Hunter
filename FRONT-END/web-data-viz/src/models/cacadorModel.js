@@ -61,6 +61,15 @@ function contarPorTipoNen() {
     return database.executar(instrucaoSql);
 }
 
+function contarPorStatus() {
+    var instrucaoSql = `
+        SELECT Status_cacador AS status, COUNT(*) AS quantidade
+        FROM Cacador
+        GROUP BY Status_cacador;
+    `;
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
@@ -68,5 +77,6 @@ module.exports = {
     enviarFoto,
     receberFoto,
     buscarPorNome,
-    contarPorTipoNen
+    contarPorTipoNen,
+    contarPorStatus
 };
