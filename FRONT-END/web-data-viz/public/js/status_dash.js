@@ -41,6 +41,7 @@ function plotarGraficoStatus(resposta) {
         },
         options: {
             responsive: true,
+            //desabilita a proporção do grafico
             maintainAspectRatio: false,
             cutout: '45%',
             plugins: {

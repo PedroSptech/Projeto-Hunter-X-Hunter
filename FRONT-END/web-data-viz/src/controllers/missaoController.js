@@ -1,9 +1,9 @@
 var missaoModel = require("../models/missaoModel");
 
-function listarPorCacador(req, res) {
+function listarPorMissao(req, res) {
     var idCacador = req.params.idCacador;
 
-    missaoModel.listarPorCacador(idCacador)
+    missaoModel.listarPorMissao(idCacador)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -53,9 +53,20 @@ function missoes(req, res){
     })
 }
 
+function totalMissoes(req,res){
+    missaoModel.totalMissoes()
+        .then(function (resultado){
+            res.status(200).json(resultado)
+        }).catch(function (erro){
+            console.log("Erro Missão:", erro); 
+            res.status(500).json(erro.sqlMessage || erro.message || erro)
+        })
+}
+
 module.exports = {
-    listarPorCacador,
+    listarPorMissao,
     publicar,
     vincular,
-    missoes
+    missoes,
+    totalMissoes
 }

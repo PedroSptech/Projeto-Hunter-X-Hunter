@@ -9,16 +9,16 @@ function autenticar(req, res) {
         cacadorModel.autenticar(codigo)
             .then(function (resultadoAutenticar) {
                 if (resultadoAutenticar.length == 1) {
-                    res.json({
-                        id:          resultadoAutenticar[0].idCacador,
-                        nome:        resultadoAutenticar[0].nome_Cacador,
-                        codigo:      resultadoAutenticar[0].Codigo_caçador,
-                        tipoNen:     resultadoAutenticar[0].Tipo_Nen,
-                        natal:       resultadoAutenticar[0].cidade_natal,
+                    res.json({             //se não tiver vai dar undefined
+                        id: resultadoAutenticar[0].idCacador,
+                        nome: resultadoAutenticar[0].nome_Cacador,
+                        codigo: resultadoAutenticar[0].Codigo_caçador,
+                        tipoNen: resultadoAutenticar[0].Tipo_Nen,
+                        natal: resultadoAutenticar[0].cidade_natal,
                         tipoCacador: resultadoAutenticar[0].Tipo_cacador,
-                        data:        resultadoAutenticar[0].dt_Nasc,
-                        ranking:     resultadoAutenticar[0].Ranking_cacador,
-                        zodiaco:     resultadoAutenticar[0].Zodiaco
+                        data: resultadoAutenticar[0].dt_Nasc,
+                        ranking: resultadoAutenticar[0].Ranking_cacador,
+                        zodiaco: resultadoAutenticar[0].Zodiaco
                     });
                 } else if (resultadoAutenticar.length == 0) {
                     res.status(403).send("Código xHUNTERx inválido");
@@ -33,14 +33,14 @@ function autenticar(req, res) {
 }
 
 function cadastrar(req, res) {
-    var nome        = req.body.nomeServer;
-    var tipoNen     = req.body.tipoNenServer;
-    var codigo      = req.body.codigoServer;
-    var natal       = req.body.natalServer;
-    var data        = req.body.dataServer;
+    var nome = req.body.nomeServer;
+    var tipoNen = req.body.tipoNenServer;
+    var codigo = req.body.codigoServer;
+    var natal = req.body.natalServer;
+    var data = req.body.dataServer;
     var tipoCacador = req.body.tipoCacadorServer;
-    var rankig      = req.body.rankigServer;
-    var zodiaco     = req.body.zodiacoServer;
+    var rankig = req.body.rankigServer;
+    var zodiaco = req.body.zodiacoServer;
 
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -65,12 +65,12 @@ function buscarPerfil(req, res) {
             } else {
                 var c = resultado[0];
                 res.json({
-                    codigo:      c.Codigo_caçador,
-                    nome:        c.nome_Cacador,
-                    nen:         c.Tipo_Nen,
+                    codigo: c.Codigo_caçador,
+                    nome: c.nome_Cacador,
+                    nen: c.Tipo_Nen,
                     cidadeNatal: c.cidade_natal,
-                    dtNasc:      c.dt_Nasc,
-                    foto:        c.foto
+                    dtNasc: c.dt_Nasc,
+                    foto: c.foto
                 });
             }
         })
@@ -79,7 +79,7 @@ function buscarPerfil(req, res) {
 
 function enviarFoto(req, res) {
     var idCacador = req.params.id;
-    var foto      = req.body.fotoServer;
+    var foto = req.body.fotoServer;
 
     if (foto == undefined) {
         res.status(400).send("URL da foto está undefined!");
@@ -105,12 +105,12 @@ function receberFoto(req, res) {
 }
 
 function buscarPorNome(req, res) {
-    var nome = req.query.nome;
- 
+    var nome = req.params.nome;
+
     if (!nome || nome.trim() === "") {
         return res.status(400).send("Nome para pesquisa não informado!");
     }
- 
+
     cacadorModel.buscarPorNome(nome.trim())
         .then(function (resultado) {
             res.json(resultado);
@@ -142,7 +142,18 @@ function contarPorStatus(req, res) {
             res.status(500).json(erro.sqlMessage);
         });
 }
- 
+
+function contarHunters(req,res){
+    cacadorModel.contarHunters()
+        .then(function (resultado){
+            res.json(resultado);
+        })
+        .catch(function (erro){
+            console.log(erro)
+            res.status(500).json(erro.sqlMessage);
+        })
+}
+
 module.exports = {
     autenticar,
     cadastrar,
@@ -151,5 +162,6 @@ module.exports = {
     receberFoto,
     buscarPorNome,
     contarPorTipoNen,
-    contarPorStatus
+    contarPorStatus,
+    contarHunters
 };

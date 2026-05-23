@@ -24,6 +24,21 @@
         </div>
         <a class="logout" href="../index.html"><img src="../assets/getout.png" alt="">SAIR</a>
     </aside>
+    <main class="conteudo-principal">
+        <div class="dados">
+            <div class="box total_cacadores">
+                <h1>TOTAL CAÇADORES:</h1>
+                <h2 id="resultado_cacadores"></h2>
+            </div>
+            <div class="box cacadores_ativo">
+                <h1>CAÇADORES ATIVOS:</h1>
+                <h2 id="resultado_ativos"></h2>
+            </div>
+            <div class="box total_missoes">
+                <h1>TOTAL MISSÕES:</h1>
+                <h2 id="resultado_missoes"></h2>
+            </div>
+        </div>
     <div class="Charts">
 
         <div class="bar-chart">
@@ -35,12 +50,24 @@
             <h1>STATUS DOS CAÇADORES</h1>
             <canvas id="statusChart"></canvas>
         </div>
-    </div>
+        <div class="bar-chart">
+            <h1>MISSÕES: GRAU DE DIFICULDADE</h1>
+            <canvas id="miissoesChart"></canvas>
+        </div>
+        
+        <div class="donut-chart">
+            <h1>STATUS DAS MISSÕES</h1>
+            <canvas id="statusMissaoChart"></canvas>
+        </div> 
+        </div>
+    </main>
 
 </body>
 <script src="../js/sidebar.js"></script>
 <script src="../js/script.js"></script>
 <script src="../js/dash.js"></script>
 <script src="../js/status_dash.js"></script>
+<script src="../js/bar_dash.js"></script>
+<script src="../js/kpi_dash.js"></script>
 
 </html>

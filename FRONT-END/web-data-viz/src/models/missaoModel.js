@@ -1,7 +1,7 @@
 var database = require("../database/config")
 
-function listarPorCacador(idCacador) {
-    console.log("ACESSEI O MISSAO MODEL \n function listarPorCacador()");
+function listarPorMissao(idCacador) {
+    console.log("ACESSEI O MISSAO MODEL \n function listarPorMissao()");
     var instrucaoSql = `
         SELECT 
             m.idMissao, 
@@ -45,9 +45,19 @@ function missoes(){
     return database.executar(instrucao);
 }
 
+function totalMissoes(){
+    console.log("ACESSEI O MISSAO MODEL \n function totalMissoes()");
+    let instrucao = `
+    SELECT COUNT(*) AS quantidade 
+    FROM Missao;
+    `
+    return database.executar(instrucao);
+}
+
 module.exports = {
-    listarPorCacador,
+    listarPorMissao,
     publicar,
     vincular,
-    missoes
+    missoes,
+    totalMissoes
 }

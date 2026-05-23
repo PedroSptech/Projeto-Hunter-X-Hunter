@@ -66,3 +66,24 @@ INSERT INTO Missao (nome_missao, Descricao_missao, status_Missao, dt_missao, gra
 
 INSERT INTO Cacador_Missao (fk_cacador, fk_missao) VALUES
 (1, 1),(3, 2),(5, 3),(2, 4),(4, 5);
+
+/*
+Missões por grau de dificuldade:
+
+SELECT grau_dificuldade, COUNT(*) AS quantidade
+FROM Missao
+GROUP BY grau_dificuldade
+ORDER BY CASE grau_dificuldade
+    WHEN 'C'  THEN 1
+    WHEN 'B'  THEN 2
+    WHEN 'A'  THEN 3
+    WHEN 'S'  THEN 4
+    WHEN 'S+' THEN 5
+END;
+
+Status das missões:
+
+SELECT status_Missao, COUNT(*) AS quantidade
+FROM Missao
+GROUP BY status_Missao;
+*/

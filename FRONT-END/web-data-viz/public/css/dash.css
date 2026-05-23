@@ -1,42 +1,95 @@
+.conteudo-principal {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    /*Caso o tamnho da tela mude cria um scroll*/
+    overflow-y: auto; 
+}
 .Charts{
-    display: flex;
-    align-items: end;
-    gap: 15px;
-    margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 20px 30px;
+    width: 100%;    
+    box-sizing: border-box;
 }
 
 .bar-chart{
-    width: 600px; 
-    height: 500px;
+    height: 25vh;
+    min-height: 250px;
     display: flex;
     align-items: center;
     flex-direction: column;
     background-color: #fffbfb;
-    padding: 45px;
+    padding: 25px;
     border: solid 5px #000000;
     border-radius: 25px;
 }
 
 .bar-chart h1{
     font-family: "Karantina", system-ui;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 130%;
     font-weight: 500;
     font-style: normal;
 }
 
 .donut-chart{
-    width: 600px; 
-    height: 500px;
+    height: 25vh;
+    min-height: 250px;
     display: flex;
     align-items: center;
     flex-direction: column;
     background-color: #fffbfb;
-    padding: 50px;
+    padding: 25px;
     border: solid 5px #000000;
     border-radius: 25px;
 }
 
 .donut-chart h1{
     font-family: "Karantina", system-ui;
+    text-align: left;
+    text-transform: uppercase;
     font-weight: 500;
+    font-size: 130%;
     font-style: normal;
+}
+.dados{
+    display: flex;
+    gap: 20px;
+    /*Se a tela encolher ele quebra a linha*/
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    width: 400px;
+    height: 120px;
+    padding: 20px;
+}
+
+.box h2{
+    font-size: 40px;
+    color: rgb(212, 66, 66);
+}
+
+.total_cacadores{
+border: solid 4px blue;
+border-radius: 25px;
+}
+
+.cacadores_ativo{
+border: solid 4px green;
+border-radius: 25px;
+}
+
+.total_missoes{
+border: solid 4px yellow;
+border-radius: 25px;
 }

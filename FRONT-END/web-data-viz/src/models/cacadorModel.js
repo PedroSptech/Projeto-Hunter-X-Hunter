@@ -70,6 +70,14 @@ function contarPorStatus() {
     return database.executar(instrucaoSql);
 }
 
+function contarHunters(){
+    var instrucaoSql = `
+    SELECT COUNT(*) AS quantidade 
+    FROM Cacador;
+    `
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
@@ -78,5 +86,6 @@ module.exports = {
     receberFoto,
     buscarPorNome,
     contarPorTipoNen,
-    contarPorStatus
+    contarPorStatus,
+    contarHunters
 };

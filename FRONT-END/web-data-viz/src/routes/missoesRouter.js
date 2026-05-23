@@ -18,4 +18,6 @@ router.get("/missoes", function(req, res){
     missaoController.missoes(req, res);
 }) 
 
+router.get("/totalMissoes", missaoController.totalMissoes);
+
 module.exports = router;
