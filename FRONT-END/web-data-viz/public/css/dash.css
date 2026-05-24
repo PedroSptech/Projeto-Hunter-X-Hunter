@@ -6,8 +6,8 @@
     width: 100%;
     height: 100vh;
     box-sizing: border-box;
-    /*Caso o tamnho da tela mude cria um scroll*/
-    overflow-y: auto; 
+    /*Apaga o scrol da tela*/
+    overflow: hidden;
 }
 .Charts{
     display: grid;

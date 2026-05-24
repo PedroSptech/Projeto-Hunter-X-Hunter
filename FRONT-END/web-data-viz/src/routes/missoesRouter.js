@@ -20,4 +20,8 @@ router.get("/missoes", function(req, res){
 
 router.get("/totalMissoes", missaoController.totalMissoes);
 
+router.get("/dificuldade", missaoController.grauDificuldade);
+
+router.get("/status", missaoController.status);
+
 module.exports = router;

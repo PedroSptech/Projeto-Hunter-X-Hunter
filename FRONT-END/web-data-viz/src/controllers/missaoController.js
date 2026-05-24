@@ -63,10 +63,32 @@ function totalMissoes(req,res){
         })
 }
 
+function grauDificuldade(req,res){
+    missaoModel.grauDificuldade()
+        .then(function (resultado){
+            res.status(200).json(resultado)
+        }).catch(function (erro){
+            console.log("Erro Missão:", erro); 
+            res.status(500).json(erro.sqlMessage || erro.message || erro)
+        })
+}
+
+function status(req, res){
+    missaoModel.status()
+        .then(function (resultado){
+            res.status(200).json(resultado)
+        }).catch(function (erro){
+            console.log("Erro Missão:", erro); 
+            res.status(500).json(erro.sqlMessage || erro.message || erro)
+        })
+}
+
 module.exports = {
     listarPorMissao,
     publicar,
     vincular,
     missoes,
-    totalMissoes
+    totalMissoes,
+    grauDificuldade,
+    status
 }

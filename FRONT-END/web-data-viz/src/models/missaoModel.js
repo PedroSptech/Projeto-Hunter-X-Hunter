@@ -54,10 +54,39 @@ function totalMissoes(){
     return database.executar(instrucao);
 }
 
+function grauDificuldade(){
+    console.log("ACESSEI O MISSAO MODEL \n function grauDificuldade()");
+    let instrucao = `
+        SELECT grau_dificuldade, COUNT(*) AS quantidade
+        FROM Missao
+        GROUP BY grau_dificuldade
+        ORDER BY CASE grau_dificuldade
+            WHEN 'C'  THEN 1
+            WHEN 'B'  THEN 2
+            WHEN 'A'  THEN 3
+            WHEN 'S'  THEN 4
+            WHEN 'S+' THEN 5
+        END;
+    `
+    return database.executar(instrucao);
+}
+
+function status(){
+    console.log("ACESSEI O MISSAO MODEL \n function status()");
+    let instrucao = `
+        SELECT status_Missao, COUNT(*) AS quantidade
+        FROM Missao
+        GROUP BY status_Missao;
+    `
+    return database.executar(instrucao);
+}
+
 module.exports = {
     listarPorMissao,
     publicar,
     vincular,
     missoes,
-    totalMissoes
+    totalMissoes,
+    grauDificuldade,
+    status
 }

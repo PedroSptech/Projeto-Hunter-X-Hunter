@@ -7,6 +7,15 @@ const COR_NEN = {
     "ESPECIALISTA":   "#0072BC"
 };
 
+const COR_MISSAO = {
+    "C": "#4fff2c",
+    "B":"#b8df0d",
+    "A":"#d6c90d",
+    "S":"#db3b0a",
+    "S+":"#DB001C",
+}
+
+function tipoNen(){
 fetch('/cacadores/nen/tipos', { cache: 'no-store' })
     .then(function(response) {
         if (response.ok) {
@@ -20,6 +29,70 @@ fetch('/cacadores/nen/tipos', { cache: 'no-store' })
     .catch(function(error) {
         console.log(error);
     });
+}
+
+tipoNen();
+
+function tipoMissoes(){
+    fetch('/missoes/dificuldade', { cache: 'no-store' })
+    .then(function(response) {
+        if (response.ok) {
+            response.json().then(function(resposta) {
+                plotarGraficoMissoes(resposta);
+            });
+        } else {
+            console.log('Erro na API, dash.js');
+        }
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+}
+
+tipoMissoes();
+
+function plotarGraficoMissoes(resposta){
+    var labels = [];
+    var quantidades = [];
+    var cores = [];
+    var bordas = [];
+
+    for (var i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+        labels.push(registro.grau_dificuldade);
+        quantidades.push(registro.quantidade);
+        cores.push(COR_MISSAO[registro.grau_dificuldade]);
+        bordas.push(COR_MISSAO[registro.grau_dificuldade]);
+    }
+    new Chart(document.getElementById('missoesChart'), {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'MISSÕES: GRAU DE DIFICULDADE',
+                data: quantidades,
+                backgroundColor: cores,
+                borderColor: bordas,
+                borderWidth: 3
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { stepSize: 1 }
+                }
+            }   
+        }
+    });
+}
 
 function plotarGraficoNen(resposta) {
     var labels = [];
