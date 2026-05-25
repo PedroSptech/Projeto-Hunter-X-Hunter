@@ -3,7 +3,10 @@ async function entrar() {   // encontra qualquer elemento mas sempre o primeiro
                         //só encontra ID
     const codigoVar = document.getElementById("codigo_login_input").value;
 
-    if (codigoVar == "") {
+    let codigo = []
+    codigo.push(codigoVar)
+
+    if (codigo == "") {
         alert("Insira seu código!");
         return;
     }
@@ -13,7 +16,7 @@ async function entrar() {   // encontra qualquer elemento mas sempre o primeiro
     fetch("/cacadores/autenticar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ codigoServer: codigoVar })
+        body: JSON.stringify({ codigoServer: codigo })
     })
         .then(resposta => {
             if (resposta.ok) {
