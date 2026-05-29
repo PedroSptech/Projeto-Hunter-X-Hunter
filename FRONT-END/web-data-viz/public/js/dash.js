@@ -15,50 +15,50 @@ const COR_MISSAO = {
     "S+":"#DB001C",
 }
 
-function tipoNen(){
-fetch('/cacadores/nen/tipos', { cache: 'no-store' })
-    .then(function(response) {
-        if (response.ok) {
-            response.json().then(function(resposta) {
-                plotarGraficoNen(resposta);
-            });
-        } else {
-            console.log('Erro na API, dash.js');
-        }
-    })
-    .catch(function(error) {
-        console.log(error);
-    });
+function tipoNen() {
+    fetch('/cacadores/nen/tipos', { cache: 'no-store' })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    plotarGraficoNen(resposta);
+                });
+            } else {
+                console.error('Erro na API, dash.js');
+            }
+        })
+        .catch(function (erro) {
+            console.error(`Erro ao buscar tipos de nen: ${erro.message}`);
+        });
 }
 
 tipoNen();
 
-function tipoMissoes(){
+function tipoMissoes() {
     fetch('/missoes/dificuldade', { cache: 'no-store' })
-    .then(function(response) {
-        if (response.ok) {
-            response.json().then(function(resposta) {
-                plotarGraficoMissoes(resposta);
-            });
-        } else {
-            console.log('Erro na API, dash.js');
-        }
-    })
-    .catch(function(error) {
-        console.log(error);
-    });
+        .then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    plotarGraficoMissoes(resposta);
+                });
+            } else {
+                console.error('Erro na API, dash.js');
+            }
+        })
+        .catch(function (erro) {
+            console.error(`Erro ao buscar missões: ${erro.message}`);
+        });
 }
 
 tipoMissoes();
 
 function plotarGraficoMissoes(resposta){
-    var labels = [];
-    var quantidades = [];
-    var cores = [];
-    var bordas = [];
+    let labels = [];
+    let quantidades = [];
+    let cores = [];
+    let bordas = [];
 
-    for (var i = 0; i < resposta.length; i++) {
-        var registro = resposta[i];
+    for (let i = 0; i < resposta.length; i++) {
+        let registro = resposta[i];
         labels.push(registro.grau_dificuldade);
         quantidades.push(registro.quantidade);
         cores.push(COR_MISSAO[registro.grau_dificuldade]);
@@ -95,13 +95,13 @@ function plotarGraficoMissoes(resposta){
 }
 
 function plotarGraficoNen(resposta) {
-    var labels = [];
-    var quantidades = [];
-    var cores = [];
-    var bordas = [];
+    let labels = [];
+    let quantidades = [];
+    let cores = [];
+    let bordas = [];
 
-    for (var i = 0; i < resposta.length; i++) {
-        var registro = resposta[i];
+    for (let i = 0; i < resposta.length; i++) {
+        let registro = resposta[i];
         labels.push(registro.Tipo_Nen);
         quantidades.push(registro.quantidade);
 

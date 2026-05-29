@@ -13,15 +13,15 @@ async function efeitoContagem(botao, textoFinal) {
 }
 //Motivo do uso
 async function cadastrar() {
-    const botao = document.querySelector("button");
-    const nomeVar = document.getElementById("nome_input").value;
-    const nenVar = document.getElementById("nen_input").value;
-    const codigoVar = document.getElementById("codigo_input").value;
-    const natalVar = document.getElementById("natal_input").value;
-    const dataVar = document.getElementById("date_input").value;
-    const tipoCacadorVar = document.getElementById("Tipo_cacador_input").value;
-    const rankigVar = document.getElementById("rankig_input").value;
-    const zodiacoVar = document.getElementById("zodiaco_input").value;
+    let botao = document.querySelector("button");
+    let nomeVar = document.getElementById("nome_input").value;
+    let nenVar = document.getElementById("nen_input").value;
+    let codigoVar = document.getElementById("codigo_input").value;
+    let natalVar = document.getElementById("natal_input").value;
+    let dataVar = document.getElementById("date_input").value;
+    let tipoCacadorVar = document.getElementById("Tipo_cacador_input").value;
+    let rankigVar = document.getElementById("rankig_input").value;
+    let zodiacoVar = document.getElementById("zodiaco_input").value;
 
     if (nomeVar == "" || nenVar == "" || codigoVar == "") {
         alert("Por favor, preencha todos os campos para o registro na Associação Hunter.");
@@ -57,6 +57,4 @@ async function cadastrar() {
         console.log(`#ERRO: ${resposta}`);
         alert("Erro no cadastro. Verifique se o código já existe ou se o servidor está rodando.");
     });
-
-    return false;
 }

@@ -26,7 +26,6 @@
     align-items: center;
     padding: 40px;
     gap: 0;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
 .Fotos {
@@ -60,6 +59,7 @@
     border: 1px solid #ddd;
     border-radius: 10px;
     font-size: 13px;
+    /*Tira a borda azul quando clica no form*/
     outline: none;
 }
 
@@ -78,6 +78,7 @@ hr {
     height: 280px;
     background-color: #E0E0E0;
     border: none;
+    /*A barra não diminui de tamnho mesmo não tendo espaço suficiente*/
     flex-shrink: 0;
     align-self: center;
 }
@@ -97,6 +98,7 @@ hr {
     padding-bottom: 12px;
 }
 
+/*Para deixar o ultimo valor sem barra embaixo como no começo não tem*/
 .dados-info p:last-child {
     border-bottom: none;
 }

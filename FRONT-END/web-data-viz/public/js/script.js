@@ -1,4 +1,4 @@
-var idCacador = localStorage.getItem("idCacador"); // <- pega o dado salvo no local storage 
+const idCacador = localStorage.getItem("idCacador"); // <- pega o dado salvo no local storage 
 
 function carregarPerfil() {
     if (!idCacador) {
@@ -8,14 +8,14 @@ function carregarPerfil() {
     }
 
     fetch("/cacadores/perfil/" + idCacador)
-        .then(function (response) { return response.json(); })
+        .then(function (resposta) { return resposta.json(); })
         .then(function (dados) {
             document.getElementById("codigo").textContent = dados.codigo;
             document.getElementById("nome").textContent = dados.nome;
             document.getElementById("nen").textContent = dados.nen;
             document.getElementById("cidade").textContent = dados.cidadeNatal;
 
-            var data = new Date(dados.dtNasc);
+            let data = new Date(dados.dtNasc);
             document.getElementById("dtNasc").textContent = data.toLocaleDateString("pt-BR");
 
             if (dados.foto && dados.foto != "") {
@@ -31,7 +31,7 @@ function carregarPerfil() {
 }
 
 function enviarFoto() {
-    var url = document.getElementById("url-foto").value;
+    const url = document.getElementById("url-foto").value;
     if (url == "") { 
         alert("Cole um link de imagem primeiro!"); 
         return; 

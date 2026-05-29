@@ -4,7 +4,7 @@ async function entrar() {   // encontra qualquer elemento mas sempre o primeiro
     const codigoVar = document.getElementById("codigo_login_input").value;
 
     let codigo = []
-    codigo.push(codigoVar)
+    codigo.push(codigoVar.trim())
 
     if (codigo == "") {
         alert("Insira seu código!");
@@ -41,6 +41,7 @@ async function efeitoContagem(botao, textoFinal) {
 
     while (count >= 0) {
         botao.innerText = `AGUARDE... ${count}`;
+                         // Sleep
         await new Promise(resolve => setTimeout(resolve, 1000));
         count--;
     }

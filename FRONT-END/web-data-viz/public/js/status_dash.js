@@ -11,9 +11,9 @@ const COR_MISSAO_STATUS = {
 }
 function cacadorStatus(){
 fetch('/cacadores/status', { cache: 'no-store' })
-    .then(function(response) {
-        if (response.ok) {
-            response.json().then(function(resposta) {
+    .then(function(resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function(resposta) {
                 plotarGraficoStatus(resposta);
             });
         } else {
@@ -29,9 +29,9 @@ cacadorStatus()
 
 function missaoStatus(){
 fetch('/missoes/status', { cache: 'no-store' })
-    .then(function(response) {
-        if (response.ok) {
-            response.json().then(function(resposta) {
+    .then(function(resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function(resposta) {
                 plotarGraficoMissoesStatus(resposta);
             });
         } else {
@@ -46,12 +46,12 @@ fetch('/missoes/status', { cache: 'no-store' })
 missaoStatus()
 
 function plotarGraficoMissoesStatus(resposta){
-    var labels = [];
-    var quantidades = [];
-    var cores = [];
+    let labels = [];
+    let quantidades = [];
+    let cores = [];
 
-    for (var i = 0; i < resposta.length; i++) {
-        var registro = resposta[i];
+    for (let i = 0; i < resposta.length; i++) {
+        let registro = resposta[i];
         labels.push(registro.status_Missao);
         quantidades.push(registro.quantidade);
         cores.push(COR_MISSAO_STATUS[registro.status_Missao]);
@@ -86,12 +86,12 @@ function plotarGraficoMissoesStatus(resposta){
 }
 
 function plotarGraficoStatus(resposta) {
-    var labels = [];
-    var quantidades = [];
-    var cores = [];
+    let labels = [];
+    let quantidades = [];
+    let cores = [];
 
-    for (var i = 0; i < resposta.length; i++) {
-        var registro = resposta[i];
+    for (let i = 0; i < resposta.length; i++) {
+        let registro = resposta[i];
         labels.push(registro.status);
         quantidades.push(registro.quantidade);
         cores.push(COR_STATUS[registro.status]);

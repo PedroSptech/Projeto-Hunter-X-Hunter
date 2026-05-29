@@ -1,13 +1,14 @@
 function configurarSidebar() {
-    var cacador = JSON.parse(localStorage.getItem("cacador"));
+                    //transforma o json devolta em objeto
+    const cacador = JSON.parse(localStorage.getItem("cacador"));
 
     if (!cacador) return;
 
-    var ehZodiaco = cacador.zodiaco === "SIM";
+    let ehZodiaco = cacador.zodiaco == "SIM";
 
     if (!ehZodiaco) {
-        var itemDashboard   = document.getElementById("item-dashboard");
-        var itemCriarMissao = document.getElementById("item-criar-missao");
+        const itemDashboard   = document.getElementById("item-dashboard");
+        const itemCriarMissao = document.getElementById("item-criar-missao");
 
         if (itemDashboard)   itemDashboard.parentElement.removeChild(itemDashboard);
         if (itemCriarMissao) itemCriarMissao.parentElement.removeChild(itemCriarMissao);

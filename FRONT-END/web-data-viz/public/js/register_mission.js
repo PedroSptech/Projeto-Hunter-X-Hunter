@@ -19,18 +19,18 @@ function limparFormulario() {
 }
 
 function cadastrarMissao() {
-    var nome = document.getElementById("nome_missao").value.trim();
-    var descricao = document.getElementById("descricao").value.trim();
-    var status = document.getElementById("status_missao").value;
-    var grau = document.getElementById("grau_dificuldade").value;
-    var data = document.getElementById("dt_missao").value;
+    let nome = document.getElementById("nome_missao").value.trim();
+    let descricao = document.getElementById("descricao").value.trim();
+    let status = document.getElementById("status_missao").value;
+    let grau = document.getElementById("grau_dificuldade").value;
+    let data = document.getElementById("dt_missao").value;
 
     if (!nome || !status || !grau || !data) {
         alert("Preencha todos os campos obrigatórios.", "erro");
         return;
     }
 
-    var btn = document.querySelector(".btn_cadastrar");
+    const btn = document.querySelector(".btn_cadastrar");
     btn.textContent = "CADASTRANDO...";
     btn.disabled = true;
 

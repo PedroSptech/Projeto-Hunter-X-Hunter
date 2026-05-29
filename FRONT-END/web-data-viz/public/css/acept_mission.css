@@ -8,7 +8,6 @@ body {
 
 .search_container {
     flex: 1;
-    margin-left: 220px;
     padding: 40px 32px;
     min-height: 100vh;
     box-sizing: border-box;
@@ -153,6 +152,7 @@ body {
     color: #fff;
 }
 
+/*Faz uma ação no momento do clique*/
 .btn_aceitar:active,
 .btn_negar:active {
     transform: scale(0.97);

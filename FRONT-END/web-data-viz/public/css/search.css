@@ -8,9 +8,10 @@ body {
 
 .search_container {
     flex: 1;
-    margin-left: 220px;
+
     padding: 40px 32px;
     min-height: 100vh;
+                /*Faz com que com a padding seja incluido no width fazendo ele não trocar de tamanho*/
     box-sizing: border-box;
 }
 
@@ -29,6 +30,7 @@ body {
     color: #fff;
     font-size: 14px;
     letter-spacing: 0.5px;
+    /*Tira a borda azul quando clica no form*/
     outline: none;
     transition: border-color 0.2s;
 }
@@ -63,13 +65,6 @@ body {
 
 .aviso.erro {
     color: #e05555;
-}
-
-.carregando {
-    color: #C42037;
-    font-size: 15px;
-    text-align: center;
-    margin-top: 40px;
 }
 
 .grid_resultado {
@@ -112,13 +107,12 @@ body {
     background: #2a2a2a;
     color: #aaa;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
 .card_nome {
     font-size: 18px;
     font-weight: 700;
-    margin: 0 0 14px 0;
+    margin-bottom:14px;
     color: #fff;
 }
 

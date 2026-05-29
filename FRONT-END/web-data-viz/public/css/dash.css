@@ -18,6 +18,7 @@
 }
 
 .bar-chart{
+              /*viewport height: Altura da tela => 100vh == 100% da tela do computador*/
     height: 25vh;
     min-height: 250px;
     display: flex;
@@ -76,7 +77,7 @@
 
 .box h2{
     font-size: 40px;
-    color: rgb(212, 66, 66);
+    color: #D44242 ;
 }
 
 .total_cacadores{

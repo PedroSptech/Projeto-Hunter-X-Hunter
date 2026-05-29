@@ -87,5 +87,5 @@ module.exports = {
     buscarPorNome,
     contarPorTipoNen,
     contarPorStatus,
-    contarHunters
+    contarHunters,
 };

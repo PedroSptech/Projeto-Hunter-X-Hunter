@@ -107,7 +107,7 @@ function receberFoto(req, res) {
 function buscarPorNome(req, res) {
     var nome = req.params.nome;
 
-    if (!nome || nome.trim() === "") {
+    if (!nome || nome.trim() == "") {
         return res.status(400).send("Nome para pesquisa não informado!");
     }
 
@@ -154,6 +154,7 @@ function contarHunters(req,res){
         })
 }
 
+
 module.exports = {
     autenticar,
     cadastrar,
@@ -163,5 +164,5 @@ module.exports = {
     buscarPorNome,
     contarPorTipoNen,
     contarPorStatus,
-    contarHunters
+    contarHunters,
 };

@@ -22,7 +22,7 @@ body {
     font-size: 28px;
     font-weight: 700;
     color: #C42037;
-    margin: 0 0 6px 0;
+    margin-bottom: 6px;
     letter-spacing: 2px;
 }
 
@@ -51,12 +51,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    position: relative;
-}
-
-/* Faz o elemento ocupar todas as colunas do grid pai */
-.form_group.full_width {
-    grid-column: 1 / -1;
 }
 
 .form_group label {
@@ -81,55 +75,22 @@ body {
     font-size: 14px;
     font-family: "Karantina", system-ui;
     letter-spacing: 0.5px;
+    /*Tira a borda azul quando clica no form*/
     outline: none;
-    transition: border-color 0.2s;
     box-sizing: border-box;
     width: 100%;
 }
-
+                 /*focus: faz algo quando o elemento é selecionado*/   
 .form_group input:focus,
 .form_group select:focus,
 .form_group textarea:focus {
     border-color: #C42037;
 }
 
-.form_group select {
-    appearance: none;
-    cursor: pointer;
-    background-position: right 16px center;
-    padding-right: 40px;
-}
-
 .char_count {
     font-size: 11px;
     color: #555;
     text-align: right;
-}
-
-.alerta {
-    padding: 14px 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    margin-bottom: 20px;
-    transition: opacity 0.3s;
-}
-
-.alerta.hidden {
-    display: none;
-}
-
-.alerta.sucesso {
-    background: rgb(31, 70, 31);
-    border: 1px solid rgb(0, 0, 0);
-    color: #50c878;
-}
-
-.alerta.erro {
-    background-color: rgb(78, 32, 32);
-    border: 1px solid rgb(0, 0, 0);
-    color: #e05555;
 }
 
 .form_actions {
@@ -146,7 +107,7 @@ body {
     color: #888;
     font-weight: 700;
     font-size: 14px;
-    font-family: "Karantina", system-ui;
+    font-family: inherit;
     letter-spacing: 1px;
     cursor: pointer;
     transition: border-color 0.2s, color 0.2s;
