@@ -4,7 +4,7 @@ async function efeitoContagem(botao, textoFinal) {
 
     while (count >= 0) {
         botao.innerText = `AGUARDE... ${count}`;
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(tempo => setTimeout(tempo, 1000));
         count--;
     }
 

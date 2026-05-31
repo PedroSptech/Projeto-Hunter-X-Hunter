@@ -4,7 +4,8 @@ const contador = document.getElementById("contador");
 // atualiza em tempo real quantos caracteres foram digitados
 if (textarea && contador) {
     textarea.addEventListener("input", function () {
-        contador.textContent = this.value.length;
+         
+        contador.textContent = textarea.value.length;
     });
 }
 

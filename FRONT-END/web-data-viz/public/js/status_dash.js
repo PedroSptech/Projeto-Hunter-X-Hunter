@@ -109,7 +109,7 @@ function plotarGraficoStatus(resposta) {
         },
         options: {
             responsive: true,
-            //desabilita a proporção do grafico
+            //desabilita a proporção do grafico, não precisa ser 400x400 pode ser 400x200
             maintainAspectRatio: false,
             cutout: '45%',
             plugins: {
