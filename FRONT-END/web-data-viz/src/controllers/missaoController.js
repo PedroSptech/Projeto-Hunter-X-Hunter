@@ -11,6 +11,8 @@ function listarPorMissao(req, res) {
                 res.status(204).send("Nenhuma missão encontrada!");
             }
         }).catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao listar missões! Erro: ", erro.sqlMessage);
             res.status(500).json(erro.sqlMessage);
         });
 }
@@ -28,59 +30,75 @@ function publicar(req, res) {
 
     missaoModel.publicar(nome, descricao, status, grauDificuldade, data)
         .then(function (resultado) {
-            res.status(201).json(resultado);
-        }).catch(function (erro) {
-            console.log("ERRO COMPLETO:", erro); 
-            res.status(500).json(erro.sqlMessage || erro.message || erro);
-        });
+                res.status(201).json(resultado);
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao publicar a missão! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            });
 }
 
 function vincular(req, res) {
     const idCacador = req.body.idCacador;
     const idMissao = req.body.idMissao;
     missaoModel.vincular(idCacador, idMissao)
-        .then(resultado => res.json(resultado))
-        .catch(erro => res.status(500).json(erro.sqlMessage));
+        .then(function (resultado) {
+                res.json(resultado);
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao vincular a missão! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            });
 }
 
 function missoes(req, res){
     missaoModel.missoes()
-    .then(function(resultado) {
-        res.status(200).json(resultado);
-    }).catch(function (erro){
-        console.log("Erro Missão:", erro); 
-            res.status(500).json(erro.sqlMessage || erro.message || erro)
-    })
+    .then(function (resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao listar as missões! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 
 function totalMissoes(req,res){
     missaoModel.totalMissoes()
-        .then(function (resultado){
-            res.status(200).json(resultado)
-        }).catch(function (erro){
-            console.log("Erro Missão:", erro); 
-            res.status(500).json(erro.sqlMessage || erro.message || erro)
+        .then(function (resultado) {
+            res.status(200).json(resultado);
         })
+        .catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao contar as missões! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 
 function grauDificuldade(req,res){
     missaoModel.grauDificuldade()
-        .then(function (resultado){
-            res.status(200).json(resultado)
-        }).catch(function (erro){
-            console.log("Erro Missão:", erro); 
-            res.status(500).json(erro.sqlMessage || erro.message || erro)
+        .then(function (resultado) {
+            res.status(200).json(resultado);
         })
+        .catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao buscar grau de dificuldade! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 
 function status(req, res){
     missaoModel.status()
-        .then(function (resultado){
-            res.status(200).json(resultado)
-        }).catch(function (erro){
-            console.log("Erro Missão:", erro); 
-            res.status(500).json(erro.sqlMessage || erro.message || erro)
+        .then(function (resultado) {
+            res.status(200).json(resultado);
         })
+        .catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao buscar status! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 
 module.exports = {

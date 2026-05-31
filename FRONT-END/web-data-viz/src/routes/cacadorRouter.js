@@ -10,19 +10,32 @@ router.post("/autenticar", function (req, res) {
     cacadorController.autenticar(req, res);
 });
 
-router.get("/perfil/:id", cacadorController.buscarPerfil);
+router.get("/perfil/:id", function (req, res) {
+    cacadorController.buscarPerfil(req, res);
+});
 
-router.post("/foto/:id", cacadorController.enviarFoto);
+router.post("/foto/:id", function (req, res) {
+    cacadorController.enviarFoto(req, res);
+});
 
-router.get("/foto/:id", cacadorController.receberFoto);
+router.get("/foto/:id", function (req, res) {
+    cacadorController.receberFoto(req, res);
+});
 
-router.get("/buscar/:nome", cacadorController.buscarPorNome);
+router.get("/buscar/:nome", function (req, res) {
+    cacadorController.buscarPorNome(req, res);
+});
 
-router.get("/nen/tipos", cacadorController.contarPorTipoNen);
+router.get("/nen/tipos", function (req, res) {
+    cacadorController.contarPorTipoNen(req, res);
+});
 
-router.get("/status", cacadorController.contarPorStatus);
+router.get("/status", function (req, res) {
+    cacadorController.contarPorStatus(req, res);
+});
 
-router.get("/contarHunters", cacadorController.contarHunters);
-
+router.get("/contarHunters", function (req, res) {
+    cacadorController.contarHunters(req, res);
+});
 
 module.exports = router;

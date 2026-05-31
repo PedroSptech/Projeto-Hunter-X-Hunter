@@ -26,7 +26,8 @@ function autenticar(req, res) {
                     res.status(403).send("Mais de um caçador com o mesmo código!");
                 }
             }).catch(function (erro) {
-                console.log("ERRO MYSQL:", erro);
+                console.log(erro);
+                console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
                 res.status(500).json(erro.sqlMessage);
             });
     }
@@ -50,8 +51,14 @@ function cadastrar(req, res) {
         res.status(400).send("Seu código está undefined!");
     } else {
         cacadorModel.cadastrar(nome, tipoNen, codigo, natal, data, tipoCacador, rankig, zodiaco)
-            .then(function (resultado) { res.json(resultado); })
-            .catch(function (erro) { res.status(500).json(erro.sqlMessage); });
+             .then(function (resultado) {
+                res.json(resultado);
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            });
     }
 }
 
@@ -74,7 +81,11 @@ function buscarPerfil(req, res) {
                 });
             }
         })
-        .catch(function (erro) { res.status(500).json(erro.sqlMessage); });
+        .catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao buscar o perfil! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 
 function enviarFoto(req, res) {
@@ -85,8 +96,14 @@ function enviarFoto(req, res) {
         res.status(400).send("URL da foto está undefined!");
     } else {
         cacadorModel.enviarFoto(foto, idCacador)
-            .then(function () { res.json({ mensagem: "Foto salva com sucesso!" }); })
-            .catch(function (erro) { res.status(500).json(erro.sqlMessage); });
+            .then(function () {
+                res.json({ mensagem: "Foto salva com sucesso!" });
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao enviar a foto! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            });
     }
 }
 
@@ -101,7 +118,11 @@ function receberFoto(req, res) {
                 res.json({ foto: resultado[0].foto });
             }
         })
-        .catch(function (erro) { res.status(500).json(erro.sqlMessage); });
+         .catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao receber a foto! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 
 function buscarPorNome(req, res) {
@@ -116,7 +137,8 @@ function buscarPorNome(req, res) {
             res.json(resultado);
         })
         .catch(function (erro) {
-            console.log("ERRO MYSQL:", erro);
+            console.log(erro);
+            console.log("\nHouve um erro ao buscar por nome! Erro: ", erro.sqlMessage);
             res.status(500).json(erro.sqlMessage);
         });
 }
@@ -127,7 +149,8 @@ function contarPorTipoNen(req, res) {
             res.json(resultado);
         })
         .catch(function (erro) {
-            console.log("ERRO MYSQL:", erro);
+            console.log(erro);
+            console.log("\nHouve um erro ao contar por tipo de Nen! Erro: ", erro.sqlMessage);
             res.status(500).json(erro.sqlMessage);
         });
 }
@@ -138,7 +161,8 @@ function contarPorStatus(req, res) {
             res.json(resultado);
         })
         .catch(function (erro) {
-            console.log("ERRO MYSQL:", erro);
+            console.log(erro);
+            console.log("\nHouve um erro ao contar por status! Erro: ", erro.sqlMessage);
             res.status(500).json(erro.sqlMessage);
         });
 }
@@ -149,7 +173,8 @@ function contarHunters(req,res){
             res.json(resultado);
         })
         .catch(function (erro){
-            console.log(erro)
+            console.log(erro);
+            console.log("\nHouve um erro ao contar hunters! Erro: ", erro.sqlMessage);
             res.status(500).json(erro.sqlMessage);
         })
 }
